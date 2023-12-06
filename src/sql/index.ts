@@ -1,1 +1,1 @@
-export { default as pool} from './queries'
+export { default as queries} from './queries'

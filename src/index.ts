@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production'){
 }
 
 // Choose port the server will be running on
-const port = process.env.PORT || 2001
+const port = process.env.SERVER_PORT || 2000
 
 // Start the server
 server.listen(port, async () => {

@@ -1,6 +1,6 @@
 // Import the routes from each file
 import testRoutes from "./testRoutes";
-
+import qrRoutes from "./qrRoutes";
 import { Router } from "express";
 
 function init(){
@@ -12,7 +12,7 @@ function init(){
     router.get('/', (req, res) => res.send({ routes : router.stack}))
     // Grouped routes
     router.use('/test', testRoutes);
-
+    router.use('/qr', qrRoutes);
     // Return the router
     return router;
 }

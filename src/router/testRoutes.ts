@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { server } from '../app';
 import { getAllRoutes } from "../utils";
-import { pool } from "../sql";
+import { queries } from "../sql";
 
 function testRoutesFactory(){
     // Create a router for specific subfolders of requests
@@ -12,7 +12,9 @@ function testRoutesFactory(){
     testRoutes.get("/routes", (req, res) => res.send({ routes : getAllRoutes(server) }));
     testRoutes.get("/sql", async (req, res) => {
         // try{
-            res.send({ msg : await pool.query('SELECT * FROM "Admins";') + "YO"})
+            res.send({ msg : await queries.getAllAdmins()})
+
+            // await pool.query('SELECT * FROM "Admins";', (err, results) => err ? res.send(err) : res.send(results.rows))
         // } catch(e:any) {
         //     res.send({msg : "e"})
         // }
