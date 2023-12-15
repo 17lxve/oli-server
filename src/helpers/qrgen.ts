@@ -1,22 +1,18 @@
-import { toDataURL } from "qrcode";
+import { toDataURL, toFile } from "qrcode";
 
 
 
-export default function generateQR(){
-    let data = {
-        nom: "Admin 1",
-        prenom: "Oli",
-        mdp: "12345"
-    }
-    
+export default function generateQR(data : {nom:string, prenom:string, filière:string, niveau:number, matière:string}){
     let stringdata = JSON.stringify(data)
-    let req = "";
     toDataURL(stringdata,
-    function (err, res){
-        if(err){console.error(err)}
+    (err, res) => {
+        if(err){
+            console.error(err)
+        }
         else{
-            req = res;
+            return res;
         }
     })
-    return req;
+    
+    toFile(`qrs/${data.nom + data.matière}.png`, JSON.stringify(data), (err) => console.error(err))
 }
