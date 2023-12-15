@@ -3,6 +3,7 @@ import testRoutes from "./testRoutes";
 import qrRoutes from "./qrRoutes";
 import userRoutes from "./userRoutes";
 import { Router } from "express";
+import { getAllRoutes } from "../utils";
 
 function init(){
     // Create a router for general use
@@ -10,7 +11,7 @@ function init(){
 
     // Add the routes to the router
     // Simple routes
-    router.get('/', (req, res) => res.send({ routes : router.stack}))
+    router.get('/', (req, res) => res.send({ routes : getAllRoutes(router)}))
     // Grouped routes
     router.use('/test', testRoutes);
     router.use('/qr', qrRoutes);
